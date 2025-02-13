@@ -44,13 +44,13 @@ void solve(){
     for(int i=0; i<m; i++){
         int p, b;
         cin>> p >> b;
-        queries.push_back({--p, b});
+        queries.push_back({p, b});
     }
     int size= 1<<n;
     seg.resize(4*size);
-    build(0, 0, size-1, n%2==0, a);
+    build(0, 0, size-1, n%2!=0, a);
     for(auto q: queries){
-        update(0, 0, size-1, q[0]-1, q[1], n%2==0);
+        update(0, 0, size-1, q[0]-1, q[1], n%2!=0);
         cout<< seg[0]<< endl;
     }
 }
